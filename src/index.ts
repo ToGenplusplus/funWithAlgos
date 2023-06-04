@@ -1,7 +1,6 @@
 import { isPalindrome } from "./easy/PalindromeNumber";
+import { romanToInt } from "./easy/RomanToInteger";
 
-const number = 123454321;
+const roman = "MCMXCIV";
 
-console.log(
-  `True or false, ${number} is a palindrome: ${isPalindrome(number)}`
-);
+console.log(`integer rep of ${roman} is: ${romanToInt(roman)}`);
