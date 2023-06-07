@@ -1,5 +1,9 @@
+// my solution (), o(n^2) and amortized o(n) space
 export function romanToInt(s: string): number {
-  const subtractions = ["I", "X", "C"];
+  const subtractions = new Set();
+  subtractions.add("I");
+  subtractions.add("X");
+  subtractions.add("C");
 
   const romanIntegerDict = {
     I: [1, "V", "X"],
@@ -20,7 +24,7 @@ export function romanToInt(s: string): number {
     const currNum = num;
     const currChar = s.charAt(sIter);
 
-    if (subtractions.indexOf(currChar) !== -1) {
+    if (subtractions.has(currChar)) {
       if (sIter + 1 < s.length) {
         const nextChar = s.charAt(sIter + 1);
         if (romanIntegerDict[currChar].indexOf(nextChar) !== -1) {
@@ -39,4 +43,27 @@ export function romanToInt(s: string): number {
     }
   }
   return num;
+}
+
+// better solution O(n) time and amortized O(1) space
+function romanToIntBetter(s: string): number {
+  let romHashmap = new Map<string, number>();
+  romHashmap.set("I", 1);
+  romHashmap.set("V", 5);
+  romHashmap.set("X", 10);
+  romHashmap.set("L", 50);
+  romHashmap.set("C", 100);
+  romHashmap.set("D", 500);
+  romHashmap.set("M", 1000);
+
+  let result: number = 0;
+
+  for (let i = 0; i < s.length - 1; i++) {
+    if (romHashmap.get(s[i]) < romHashmap.get(s[i + 1])) {
+      result = result - romHashmap.get(s[i]);
+    } else {
+      result = result + romHashmap.get(s[i]);
+    }
+  }
+  return (result = result + romHashmap.get(s[s.length - 1]));
 }
