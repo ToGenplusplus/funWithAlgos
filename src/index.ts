@@ -1,6 +1,7 @@
-import { isPalindrome } from "./easy/PalindromeNumber";
-import { romanToInt } from "./easy/RomanToInteger";
+import { longestCommonPrefix } from "./easy/LongestCommonPrefix";
 
-const roman = "XIV";
+const strs = ["temi", "temiloluwa", "temileyin"];
 
-console.log(`integer rep of ${roman} is: ${romanToInt(roman)}`);
+console.log(
+  `longest common prefix in ${strs}, is : ${longestCommonPrefix(strs)}`
+);
