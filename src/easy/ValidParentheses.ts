@@ -57,6 +57,82 @@
  *
  */
 
-const isValidParenthesesis = (s: string): boolean => {
-  return true;
+/**
+ * My solution:
+ * Time complexity: O(n)
+ * Space complexity: O(n) - this can be reduced to O(1) using 3 variables for each parenthesis type instead of a stack(array),
+ * since if the input s is all open parens, the size of the stack would be the length of s
+ * @param s
+ * @returns
+ */
+export const isValidParenthesesis = (s: string): boolean => {
+  // condition 1
+  if (s.length % 2 !== 0) return false;
+
+  //condition 2 and 3
+  const bracket = ["[", "]"];
+  const curly = ["{", "}"];
+  const paren = ["(", ")"];
+
+  const stack = [];
+  let isValidParenthesesis = false;
+  for (let i = 0; i < s.length; i++) {
+    if (
+      s.charAt(i) === bracket[0] ||
+      s.charAt(i) === curly[0] ||
+      s.charAt(i) === paren[0]
+    ) {
+      stack.push(s.charAt(i));
+    } else {
+      if (stack.length > 0) {
+        const charFromStack = stack.pop();
+        if (charFromStack === bracket[0] && s.charAt(i) === bracket[1]) {
+          isValidParenthesesis = true;
+        } else if (charFromStack === curly[0] && s.charAt(i) === curly[1]) {
+          isValidParenthesesis = true;
+        } else if (charFromStack === paren[0] && s.charAt(i) === paren[1]) {
+          isValidParenthesesis = true;
+        } else {
+          isValidParenthesesis = false;
+        }
+      } else {
+        isValidParenthesesis = false;
+      }
+
+      if (!isValidParenthesesis) break;
+    }
+  }
+  stack.length > 0 && (isValidParenthesesis = false);
+  return isValidParenthesesis;
 };
+
+// Checks i forgot to make before i arrived at above solution:
+// length of stack should be 0 after iterating through the string
+// setting the isValidParenthesesis to false when if conditions are not successfull
+
+/**
+ * Time complexity is O(n) - leveraging a hash map to improve search performance
+ * space complexity is O(n) -
+ * @param s
+ * @returns
+ */
+function isValidBetter(s: string): boolean {
+  const bracketsMap = {
+    ")": "(",
+    "}": "{",
+    "]": "[",
+  };
+  const parens = [];
+
+  for (let i = 0; i < s.length; i++) {
+    if (bracketsMap[s[i]]) {
+      if (parens.pop() !== bracketsMap[s[i]]) {
+        return false;
+      }
+    } else {
+      parens.push(s[i]);
+    }
+  }
+
+  return parens.length === 0;
+}

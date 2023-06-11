@@ -1,7 +1,9 @@
-import { longestCommonPrefix } from "./easy/LongestCommonPrefix";
+import { isValidParenthesesis } from "./easy/ValidParentheses";
 
-const strs = ["temi", "temiloluwa", "temileyin"];
+const s = "[[[]";
 
 console.log(
-  `longest common prefix in ${strs}, is : ${longestCommonPrefix(strs)}`
+  `True or false, ${s} is a set of valid parentheses: ${isValidParenthesesis(
+    s
+  )}`
 );
