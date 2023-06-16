@@ -1,9 +1,5 @@
-import { isValidParenthesesis } from "./easy/ValidParentheses";
+import { removeDuplicates } from "./easy/RemoveDuplicatesFromSortedList";
 
-const s = "[[[]";
+const nums = [1, 2];
 
-console.log(
-  `True or false, ${s} is a set of valid parentheses: ${isValidParenthesesis(
-    s
-  )}`
-);
+console.log(`number of duplicates in ${nums} is ${removeDuplicates(nums)}`);

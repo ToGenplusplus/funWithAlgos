@@ -60,3 +60,22 @@
  * time complexity would be O(n) since we are moving through the entire array once
  * space complexity is O(1) variables are constant, no use of an additional data structure
  */
+
+export function removeDuplicates(nums: number[]): number {
+  if (nums.length > 0 && nums.length === 1) return 1;
+
+  let positionPointer = 1;
+  let checkPointer = 1;
+  let prevValue = nums[0];
+
+  while (checkPointer < nums.length) {
+    if (nums[checkPointer] !== prevValue) {
+      nums[positionPointer] = nums[checkPointer];
+      prevValue = nums[checkPointer];
+      positionPointer++;
+    }
+    checkPointer++;
+  }
+
+  return positionPointer;
+}
