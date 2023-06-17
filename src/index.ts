@@ -1,5 +1,11 @@
-import { removeDuplicates } from "./easy/RemoveDuplicatesFromSortedList";
+import { strStr } from "./easy/FirstOccurenceOfString";
 
-const nums = [1, 2];
+const needle = "issip";
+const haystack = "mississippi";
 
-console.log(`number of duplicates in ${nums} is ${removeDuplicates(nums)}`);
+console.log(
+  `index of first orccurence of ${needle} in ${haystack} is ${strStr(
+    haystack,
+    needle
+  )}`
+);

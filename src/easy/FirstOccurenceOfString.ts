@@ -23,7 +23,8 @@
  *
  *  while foundPointer < haystack.length
  *      if char in needle at checkPointer does not match char in haystack at foundPointer
- *          we set matchingPointer to foundPointer
+ *          we set matchingPointer to foundPointer if haystack char at foundPointer matches needle char at 0
+ *              else we increase foundPointer by 1 and set matchingPointer to foundPointer
  *          we set checkPointer to 0
  *
  *      else
@@ -50,3 +51,28 @@
  *
  *
  */
+
+export function strStr(haystack: string, needle: string): number {
+  if (needle.length > haystack.length) return -1;
+
+  let checkPointer = 0;
+  let matchingPointer = 0;
+  let foundPointer = 0;
+
+  while (checkPointer < haystack.length) {
+    if (needle.charAt(foundPointer) !== haystack.charAt(checkPointer)) {
+      checkPointer =
+        haystack.charAt(checkPointer) === needle.charAt(0)
+          ? checkPointer
+          : checkPointer + 1;
+      matchingPointer = checkPointer;
+      foundPointer = 0;
+    } else {
+      if (foundPointer + 1 === needle.length) return matchingPointer;
+      checkPointer++;
+      foundPointer++;
+    }
+  }
+
+  return -1;
+}
