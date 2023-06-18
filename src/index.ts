@@ -1,11 +1,6 @@
-import { strStr, strStrv2 } from "./easy/FirstOccurenceOfString";
+import { searchInsert } from "./easy/SearchInsertPosition";
 
-const needle = "issip";
-const haystack = "mississippi";
+const nums = [1, 3, 5, 7, 10, 22, 33, 36, 49];
+const target = 37;
 
-console.log(
-  `index of first orccurence of ${needle} in ${haystack} is ${strStrv2(
-    haystack,
-    needle
-  )}`
-);
+console.log(`index of ${target} in ${nums} is ${searchInsert(nums, target)}`);

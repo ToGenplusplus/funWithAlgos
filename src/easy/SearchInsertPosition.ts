@@ -30,3 +30,35 @@
  * if interger in num at mid > t target recursively call on the left side
  * else recursively call on the right side
  */
+
+export function searchInsert(nums: number[], target: number): number {
+  if (target > nums[nums.length - 1]) return nums.length;
+  if (target < nums[0]) return 0;
+
+  return findIndex(nums, target, 0, nums.length);
+}
+
+function findIndex(
+  nums: number[],
+  target: number,
+  start: number,
+  end: number
+): number {
+  if (end - start <= 0) return start;
+  if (end - start === 1) {
+    const mid = Math.floor((start + end) / 2);
+    if (nums[mid] === target) return mid;
+    if (nums[mid] > target) return start;
+    return end;
+  }
+
+  const mid = Math.floor((start + end) / 2);
+  if (nums[mid] === target) return mid;
+  if (nums[mid] > target) return findIndex(nums, target, start, mid);
+  return findIndex(nums, target, mid + 1, end);
+}
+
+/**
+ * Time complexity is O(log(n)) where n is the number of integers in num
+ * space complexitjy is o(1)
+ */
