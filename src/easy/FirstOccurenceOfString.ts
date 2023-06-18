@@ -76,3 +76,61 @@ export function strStr(haystack: string, needle: string): number {
 
   return -1;
 }
+
+/**
+ * above solution is incomplete, Idea 2:
+ * use a map to keep track of the number of occurrences of the first char
+ * in needle found in haystack. Map will be occurence to index
+ *
+ * every time we char in n does not occur in h, we reset out startComparison pointer
+ * to the next occurrence if there is one, if there isn't then we break and return -1
+ *
+ *
+ */
+
+export function strStrv2(haystack: string, needle: string): number {
+  if (needle.length > haystack.length) return -1;
+
+  let occurenceIndexMap = new Object();
+
+  let foundOccurences = 0;
+  for (let i = 0; i < haystack.length; i++) {
+    if (needle.charAt(0) === haystack.charAt(i)) {
+      occurenceIndexMap[++foundOccurences] = i;
+    }
+  }
+
+  console.log(occurenceIndexMap);
+
+  if (foundOccurences !== 0) {
+    let occurenceCount = 1;
+    let firstOccurerence = occurenceIndexMap[occurenceCount];
+    let startCompPointer = firstOccurerence;
+    let checkPointer = startCompPointer;
+    let foundPointer = 0;
+    while (checkPointer < haystack.length) {
+      if (needle.charAt(foundPointer) === haystack.charAt(checkPointer)) {
+        if (foundPointer + 1 === needle.length) return startCompPointer;
+        checkPointer++;
+        foundPointer++;
+      } else {
+        let nextStartPoint = occurenceIndexMap[++occurenceCount];
+        if (!nextStartPoint) break;
+        startCompPointer = nextStartPoint;
+        checkPointer = startCompPointer;
+        foundPointer = 0;
+      }
+      // if char in n at found pointer = char in n at check pointer
+      //  if found pointer + 1 === needle.length return startCompPointer
+      //  else increase check pointer, increase found pointer
+      // else
+      //  let nextStartPoint = map[++occurenceCount]
+      //  if nextStartPoint
+      //     startCompPointer = nextStartPoint
+      //     checkPointer = nextStartPoint
+      //  else break
+    }
+  }
+
+  return -1;
+}
