@@ -100,8 +100,6 @@ export function strStrv2(haystack: string, needle: string): number {
     }
   }
 
-  console.log(occurenceIndexMap);
-
   if (foundOccurences !== 0) {
     let occurenceCount = 1;
     let firstOccurerence = occurenceIndexMap[occurenceCount];
