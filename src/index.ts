@@ -1,6 +1,4 @@
-import { searchInsert } from "./easy/SearchInsertPosition";
+import { plusOne } from "./easy/PlusOne";
 
-const nums = [1, 3, 5, 7, 10, 22, 33, 36, 49];
-const target = 37;
-
-console.log(`index of ${target} in ${nums} is ${searchInsert(nums, target)}`);
+const nums = [4, 3, 2, 6];
+const target = console.log(`${nums} + 1 = ${plusOne(nums)}`);

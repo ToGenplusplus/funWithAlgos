@@ -27,3 +27,26 @@
  *
  * return array
  */
+
+export function plusOne(digits: number[]): number[] {
+  let carryOver = true;
+  for (let i = digits.length - 1; i >= 0; i--) {
+    const valIncrement = digits[i] + 1;
+    if (valIncrement === 10) {
+      digits[i] = 0;
+    } else {
+      digits[i] = valIncrement;
+      carryOver = false;
+      break;
+    }
+  }
+  if (carryOver) {
+    digits.unshift(1);
+  }
+  return digits;
+}
+
+/**
+ * Time complexity - O(n) where n is the length of digits
+ * space complexity - O(1)
+ */
