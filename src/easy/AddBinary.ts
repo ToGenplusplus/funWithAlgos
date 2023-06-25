@@ -46,9 +46,32 @@
  * Possible solution algorithm:
  * set carryOver to 0
  * iterate over both a and b starting at the last character
- *  add carryOver to a
- *      add 1 to a
+ *  let a = carryOver + a
+ *      if a == 2
+ *       a = 0
+ *       carryOver = 1
+ *      else
+ *        carryOver = 0
+ *  add a to b
+ *      if a  + b == 2
+ *          result digit is 0
+ *          carryOver = 1
+ *      else
+ *        carryOver = 0
  *
+ * if there are still integer to process in string 1
+ *  add carryOver to digit in string1
+ *    if result == 2
+ *     carryOver = 1
+ *     add 0 to returnString
+ *     carryOver = 1
+ *    else
+ *        carryOver = 0
+ *
+ * do the same for string 2
+ *
+ * at the end if carryOver is 1, add 1 to returnString
+ * returnString
  *
  *
  *
