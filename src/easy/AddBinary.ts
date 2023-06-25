@@ -76,3 +76,66 @@
  *
  *
  */
+
+export function addBinary(a: string, b: string): string {
+  let carryOver = 0;
+  let returnString = [];
+  let startA = a.length - 1;
+  let startB = b.length - 1;
+
+  while (startA > -1 && startB > -1) {
+    let result = parseInt(a.charAt(startA)) + carryOver;
+    if (result === 2) {
+      result = 0;
+      carryOver = 1;
+    } else {
+      carryOver = 0;
+    }
+    let result2 = result + parseInt(b.charAt(startB));
+    if (result2 === 2) {
+      returnString.unshift("0");
+      carryOver = 1;
+    } else {
+      returnString.unshift(result2.toString());
+    }
+    startA--;
+    startB--;
+  }
+
+  if (startA !== -1) {
+    processString(carryOver, a.substring(0, startA + 1), returnString);
+  }
+
+  if (startB !== -1) {
+    processString(carryOver, b.substring(0, startB + 1), returnString);
+  }
+
+  if (startA === -1 && startB === -1) {
+    if (carryOver === 1) {
+      returnString.unshift("1");
+    }
+  }
+
+  return returnString.join("");
+}
+
+function processString(carry: number, a: string, returnString: string[]) {
+  let carryOver = carry;
+  let start = a.length - 1;
+
+  while (start > -1) {
+    let result = parseInt(a.charAt(start)) + carryOver;
+    if (result === 2) {
+      returnString.unshift("0");
+      carryOver = 1;
+    } else {
+      returnString.unshift(result.toString());
+      carryOver = 0;
+    }
+    start--;
+  }
+
+  if (carryOver === 1) {
+    returnString.unshift("1");
+  }
+}

@@ -1,4 +1,6 @@
-import { plusOne } from "./easy/PlusOne";
+import { addBinary } from "./easy/AddBinary";
 
-const nums = [4, 3, 2, 6];
-const target = console.log(`${nums} + 1 = ${plusOne(nums)}`);
+const a = "111111";
+const b = "100";
+
+console.log(`${a} + ${b} = ${addBinary(a, b)}`);
