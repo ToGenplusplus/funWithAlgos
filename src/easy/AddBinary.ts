@@ -77,6 +77,12 @@
  *
  */
 
+/**
+ * Tine complexity is O(max(la,lb) + l)
+ * where l is the length of the longest substring being processed in the process string function
+ * Space complexity is O(max(la,lb)) since the size of result is dependent on the on the lenght of the larger inputs string
+ */
+
 export function addBinary(a: string, b: string): string {
   let carryOver = 0;
   let returnString = [];
@@ -138,4 +144,41 @@ function processString(carry: number, a: string, returnString: string[]) {
   if (carryOver === 1) {
     returnString.unshift("1");
   }
+}
+
+/**
+ * Better solution
+ * Tine complexity is O(max(la,lb))
+ * Space complexity is O(max(la,lb)) since the size of result is dependent on the on the lenght of the larger inputs string
+ */
+
+function addBinaryBetter(a: string, b: string): string {
+  let result = "";
+  let plus = 0;
+
+  let la = a.length;
+  let lb = b.length;
+  if (la < lb) {
+    a = "0".repeat(lb - la) + a;
+  } else {
+    b = "0".repeat(la - lb) + b;
+  }
+
+  let i = a.length - 1;
+
+  while (i >= 0) {
+    const char1 = a.charAt(i);
+    const char2 = b.charAt(i);
+    const sum = plus + Number(char1) + Number(char2);
+    let digit = sum % 2;
+    result = digit + result;
+    plus = Math.floor(sum / 2);
+    i--;
+  }
+
+  if (plus) {
+    result = "1" + result;
+  }
+
+  return result;
 }
