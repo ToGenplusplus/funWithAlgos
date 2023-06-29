@@ -1,5 +1,6 @@
-import { removeDuplicates } from "./easy/RemoveDuplicatesFromSortedList";
+import { addBinary } from "./easy/AddBinary";
 
-const nums = [1, 2];
+const a = "111111";
+const b = "100";
 
-console.log(`number of duplicates in ${nums} is ${removeDuplicates(nums)}`);
+console.log(`${a} + ${b} = ${addBinary(a, b)}`);
