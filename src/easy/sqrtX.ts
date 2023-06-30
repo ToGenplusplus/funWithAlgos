@@ -47,3 +47,25 @@ export function mySqrt(x: number): number {
     upper++;
   }
 }
+
+/**
+ * Time complexity is O(log(X))
+ * Space complexity is O(1)
+ */
+
+export function mySqrtBetter(x: number): number {
+  let start = 0;
+  let end = x + 1;
+
+  while (start < end) {
+    const mid = Math.floor((start + end) / 2);
+
+    if (mid * mid > x) {
+      end = mid;
+    } else {
+      start = mid + 1;
+    }
+  }
+
+  return start - 1;
+}
