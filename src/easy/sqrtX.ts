@@ -23,4 +23,27 @@
  * 1 | 2 | 3 | 4 | 9 |
  * 2 | 3 | 4| 9 | 16
  * 3 | 4 | 5 | 16 | 25 -> yes 23 is between 16 and 25 so the answer is 4
+ *
+ * Time complexity is O(sqrt(x))
+ * Space complexity is O(1)
  */
+
+export function mySqrt(x: number): number {
+  if (x === 0 || x === 1) {
+    return x;
+  }
+
+  let lower = 1;
+  let upper = 2;
+
+  while (true) {
+    let lowerSquared = lower * lower;
+    let upperSquared = upper * upper;
+
+    if (x >= lowerSquared && x < upperSquared) {
+      return lower;
+    }
+    lower++;
+    upper++;
+  }
+}

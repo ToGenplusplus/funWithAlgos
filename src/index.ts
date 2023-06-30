@@ -1,6 +1,5 @@
-import { addBinary } from "./easy/AddBinary";
+import { mySqrt } from "./easy/sqrtX";
 
-const a = "111111";
-const b = "100";
+const x = 813;
 
-console.log(`${a} + ${b} = ${addBinary(a, b)}`);
+console.log(`sqrt of ${x} rounded down to the lowest integer is ${mySqrt(x)}`);
