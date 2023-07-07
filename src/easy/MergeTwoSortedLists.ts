@@ -1,3 +1,4 @@
+import { ListNode } from "./util/classes";
 /**
  * Given:
  *  head of two sorted (non decreasing) linked list of numbers (-100 to 100)
@@ -74,14 +75,6 @@
  *
  * return returList -> 0,1,2,3,3,4,4,5
  */
-class ListNode {
-  val: number;
-  next: ListNode | null;
-  constructor(val?: number, next?: ListNode | null) {
-    this.val = val === undefined ? 0 : val;
-    this.next = next === undefined ? null : next;
-  }
-}
 
 function mergeTwoList(
   list1: ListNode | null,
