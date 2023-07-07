@@ -1,3 +1,4 @@
+import { ListNode } from "./util/classes";
 /**
  * Given:
  * head of a sorted lined list
@@ -24,3 +25,22 @@
  * need a pointer to keep track of the head of the list
  * return headOfListPointer
  */
+
+function deleteDuplicates(head: ListNode | null): ListNode | null {
+  if (head === null) return head;
+
+  let previousNode = head;
+  let returnList = previousNode;
+  let checkNode = previousNode.next;
+
+  while (checkNode !== null) {
+    if (checkNode.val === previousNode.val) {
+      previousNode.next = checkNode.next;
+    } else {
+      previousNode = checkNode;
+    }
+    checkNode = checkNode.next;
+  }
+
+  return returnList;
+}
