@@ -1,5 +1,9 @@
-import { mySqrt } from "./easy/sqrtX";
+import { merge } from "./easy/MergeSortedArray";
 
-const x = 813;
+const nums1 = [-2, 0, 1];
+const nums2 = [-5, -3];
+const m = 3;
+const n = 2;
 
-console.log(`sqrt of ${x} rounded down to the lowest integer is ${mySqrt(x)}`);
+console.log(`Result of merging ${nums1} and ${nums2} together:`);
+merge(nums1, m, nums2, n);
