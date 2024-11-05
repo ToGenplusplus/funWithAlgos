@@ -21,6 +21,11 @@ Clarification questions:
 
 Techniques:
 
+- can a solution be found by iterating through the array from the end?
+  - e.g if we needed to find the elements in an array that are greater than all the elements to the right of itself (the leaders).
+- [two pointer](https://www.geeksforgeeks.org/two-pointers-technique/)
+  - usecases
+    - for finding pairs
+    - keeping track of elements that need to be changed
 - prefix sum
-- sliding window
-- two pointer
+- [sliding window](https://www.geeksforgeeks.org/window-sliding-technique/)
