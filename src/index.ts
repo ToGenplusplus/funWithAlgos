@@ -1,5 +1,11 @@
-import { removeDuplicatesFromSortedArray } from "../arrays";
+import { arrayReverseIterative } from "../arrays";
 
-const input = [1, 2, 3];
-const duplicatesRemoved = removeDuplicatesFromSortedArray(input, input.length);
-console.log(duplicatesRemoved);
+const input = [];
+for (let i = 0; i < 100; i++) {
+  input.push(i);
+}
+console.log("------------BEFORE REVERSE------");
+console.log(input);
+arrayReverseIterative(input);
+console.log("------------AFTER REVERSE------");
+console.log(input);

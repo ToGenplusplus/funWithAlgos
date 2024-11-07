@@ -35,3 +35,18 @@ export const removeDuplicatesFromSortedArray = (arr, n) => {
   }
   return arr.slice(0, trackingIndex + 1);
 };
+
+type reverseInput = number | string;
+export const arrayReverseIterative = (arr: reverseInput[]) => {
+  if (arr.length < 2) return arr;
+
+  let start = 0,
+    end = arr.length - 1;
+  while (start < end) {
+    let temp = arr[start];
+    arr[start] = arr[end];
+    arr[end] = temp;
+    start++;
+    end--;
+  }
+};
