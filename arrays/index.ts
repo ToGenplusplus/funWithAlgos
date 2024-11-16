@@ -50,3 +50,34 @@ export const arrayReverseIterative = (arr: reverseInput[]) => {
     end--;
   }
 };
+
+export const mergeTwoSortedArrays = (arr1: number[], arr2: number[]) => {
+  if (arr1.length == 0) return arr2;
+  if (arr2.length == 0) return arr1;
+
+  let fi = 0;
+  let si = 0;
+  let result = [];
+  while (fi < arr1.length && si < arr2.length) {
+    if (arr1[fi] <= arr2[si]) {
+      result.push(arr1[fi]);
+      fi++;
+    } else {
+      result.push(arr2[si]);
+      si++;
+    }
+  }
+
+  if (fi != arr1.length) {
+    while (fi < arr1.length) {
+      result.push(arr1[fi]);
+      fi++;
+    }
+  } else {
+    while (si < arr2.length) {
+      result.push(arr2[si]);
+      si++;
+    }
+  }
+  return result;
+};

@@ -11,6 +11,7 @@
 
 ## Problem solving:
 
+In order to ensure you are understanding/solving the actual problem, accounting for edge cases, its important to ask 
 Clarification questions:
 
 - can the array be empty
@@ -18,11 +19,15 @@ Clarification questions:
 - Is the array sorted?
 - what type of numbers are in the array (intergers, floating point)
 - are numbers all positive?
+- Are we optimizing for memory or time complexity?
+
+Answers to these questions can lead to identifying the technique to use to solving the problem
 
 Techniques:
 
-- can a solution be found by iterating through the array from the end?
+- can an optimal solution be found by iterating through the array from the end?
   - e.g if we needed to find the elements in an array that are greater than all the elements to the right of itself (the leaders).
+- Can an optimal solution be found by revering the elements of the array? 
 - [two pointer](https://www.geeksforgeeks.org/two-pointers-technique/)
   - usecases
     - for finding pairs
